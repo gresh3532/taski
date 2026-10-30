@@ -1,0 +1,13 @@
+[Unit]
+Description=gunicorn daemon for Taski
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/taski/backend/
+ExecStart=/home/ubuntu/taski/backend/venv/bin/gunicorn \
+    --bind 0.0.0.0:8000 \
+    backend.wsgi
+
+[Install]
+WantedBy=multi-user.target
